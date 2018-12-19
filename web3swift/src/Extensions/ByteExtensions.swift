@@ -59,7 +59,8 @@ extension BigInt {
 }
 
 extension Data {
-    public var bytes: [UInt8] {
+    // Become internal. Defined in CryptoSwift
+    internal var bytes: [UInt8] {
         var sigBytes = [UInt8](repeating: 0, count: self.count)
         self.copyBytes(to: &sigBytes, count: self.count)
         return sigBytes
