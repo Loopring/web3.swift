@@ -23,5 +23,6 @@ Pod::Spec.new do |s|
   s.public_header_files = 'web3swift/web3swift.h'
 
   s.dependency 'BigInt', '~> 3.0.1'
+  s.dependency 'secp256k1_ios', git: 'https://github.com/shamatar/secp256k1_ios.git', inhibit_warnings: true
 
 end
