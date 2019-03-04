@@ -53,5 +53,25 @@ enum ERC20Functions {
             try encoder.encode(account)
         }
     }
+
+    struct bind: ABIFunction {
+        static let name = "getBindingAddress"
+        let gasPrice: BigUInt? = nil
+        let gasLimit: BigUInt? = nil
+        var contract: EthereumAddress
+        let account: EthereumAddress
+        let projectId: String
+        let from: EthereumAddress? = nil
+        
+        func encode(to encoder: ABIFunctionEncoder) throws {
+            do {
+                try encoder.encode(account)
+                try encoder.encode(type: ABIRawType.FixedUInt(8), value: projectId)
+            } catch {
+                print(11111)
+            }
+        }
+    }
+
 }
 

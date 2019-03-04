@@ -17,7 +17,7 @@ public enum ABIError: Error {
     case notCurrentlySupported
 }
 
-enum ABIRawType {
+public enum ABIRawType {
     case FixedUInt(Int)
     case FixedInt(Int)
     case FixedAddress
@@ -32,7 +32,7 @@ enum ABIRawType {
 
 extension ABIRawType: RawRepresentable {
     
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .FixedUInt(let size): return "uint\(size)"
         case .FixedInt(let size): return "int\(size)"

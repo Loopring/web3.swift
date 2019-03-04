@@ -9,7 +9,7 @@
 import Foundation
 
 extension ABIRawType {
-    init?(rawValue: String) {
+    public init?(rawValue: String) {
         // Specific match
         if rawValue == "uint" {
             self = ABIRawType.FixedUInt(256)

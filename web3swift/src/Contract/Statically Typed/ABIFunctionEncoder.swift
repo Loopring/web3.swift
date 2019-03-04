@@ -10,10 +10,10 @@ import Foundation
 import BigInt
 
 public class ABIFunctionEncoder {
-    private let name: String
-    private var head = [UInt8]()
-    private var tail = [UInt8]()
-    private var types: [ABIRawType] = []
+    public let name: String
+    public var head = [UInt8]()
+    public var tail = [UInt8]()
+    public var types: [ABIRawType] = []
     
     public func encode(_ value: String) throws {
         let strValue = value
@@ -57,7 +57,7 @@ public class ABIFunctionEncoder {
         return try self.encode(type: type, value: strValue)
     }
     
-    private func encode(type: ABIRawType, value: String) throws {
+    public func encode(type: ABIRawType, value: String) throws {
         let result = try ABIEncoder.encode(value, forType: type)
         
         if type.isDynamic {
@@ -75,7 +75,7 @@ public class ABIFunctionEncoder {
         self.name = name
     }
     
-    func encoded() throws -> Data {
+    public func encoded() throws -> Data {
         let sig = try ABIEncoder.signature(name: name, types: types)
         let methodId = Array(sig.prefix(4))
         let allBytes = methodId + head + tail
